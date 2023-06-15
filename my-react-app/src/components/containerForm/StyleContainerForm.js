@@ -3,7 +3,7 @@ import  styled  from "styled-components";
 export const StyleContainerForm = styled.div`
     padding: 20px 15px;
     margin: auto;
-    max-width: 500px;
+    max-width: 450px;
 
     .header{
         display: flex;

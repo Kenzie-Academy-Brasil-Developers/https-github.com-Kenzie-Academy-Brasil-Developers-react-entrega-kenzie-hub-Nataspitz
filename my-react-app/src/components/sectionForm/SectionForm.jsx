@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { StyleSectionForm } from "./StyleSectionForm";
 
 export function SectionForm({ title, text, children, span, button }) {
+
     return(
         <StyleSectionForm  >
             {
