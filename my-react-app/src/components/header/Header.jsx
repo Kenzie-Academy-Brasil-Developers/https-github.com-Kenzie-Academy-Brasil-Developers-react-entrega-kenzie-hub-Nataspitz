@@ -2,11 +2,15 @@ import { StyleHeader } from "./StyleHeader";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 
-export function Header({ text }) {
+export function Header({ text, logout, returnHome }) {
     return(
         <StyleHeader>
             <img src={ logo } alt="Logo da KenzieHub" />
-            <Link to={"/"}>{ text }</Link>
+            {
+                logout === true
+                ? <button onClick={returnHome} >{text}</button>
+                :  <Link to={"/"}>{ text }</Link>
+            }
         </StyleHeader>
     )
 }

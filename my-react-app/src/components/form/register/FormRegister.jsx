@@ -1,6 +1,6 @@
 import { StyleForm } from "../StyleForm";
 import { useForm } from "react-hook-form";
-import { RegitserSchema } from "./RegisterSchema";
+import { RegisterSchema } from "./RegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StyleRestriction } from "../StyleRestriction";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,10 @@ import { api } from "../../../services/Api";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-
 export function FormRegister() {
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(RegitserSchema)
+        resolver: zodResolver(RegisterSchema)
     })
-
     const navFromLogin = useNavigate()
 
    async function registerUser(form) {
@@ -25,14 +23,13 @@ export function FormRegister() {
                 navFromLogin("/")
             }, 1000)
         } catch (error) {
-            console.error(error)
+            toast.error("dados já cadastrados")          
         }
     }
 
     async function submit(form) {
         registerUser(form);
     }
-
 
     return(
         <StyleForm onSubmit={handleSubmit(submit)} noValidate>

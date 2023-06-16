@@ -32,6 +32,14 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 }
 
+body, input, button, select, a {
+    font-family: 'Inter', sans-serif;
+}
+
+h1{
+    color: white;
+}
+
 li, ol{
     list-style: none;
 }
@@ -64,5 +72,10 @@ label{
 body{
     background-color: var(--grey-4);
 }
+
+.subHeader{
+    border: 1px solid var(--grey-3);
+}
+
 
 `
