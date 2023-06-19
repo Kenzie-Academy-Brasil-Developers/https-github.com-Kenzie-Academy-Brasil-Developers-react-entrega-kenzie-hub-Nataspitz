@@ -1,4 +1,4 @@
-import { z, string } from "zod";
+import { z } from "zod";
 
 export const registerSchema = z.object({
     name: z.string().min(3, "*O nome precisa de pelo 3 caracteres."),
@@ -9,9 +9,9 @@ export const registerSchema = z.object({
     .regex(/(?=.*?[#?!@$%^&*-])/, "*É necessário pelo menos um caracter especial (@#%$-)")
     .regex(/(?=.*?[0-9])/, "*É necessário pelo menos um número"),
     confirm_password: z.string().min(1, "*Por favor confirme sua senha"),
-   bio: string().min(10, "*Escreva mais sobre você"),
-    contact: string().length(11, "*O telefone deve conter o DDD"),
-    course_module: string().nonempty("*Selecione um módulo"),
+    bio: z.string().min(10, "*Escreva mais sobre você"),
+    contact: z.string().length(11, "*O telefone deve conter o DDD"),
+    course_module: z.string().nonempty("*Selecione um módulo"),
 }).refine(({ password, confirm_password }) => password === confirm_password, {
     message: "*As senhas são diferentes",
     path: ["confirm_password"]
