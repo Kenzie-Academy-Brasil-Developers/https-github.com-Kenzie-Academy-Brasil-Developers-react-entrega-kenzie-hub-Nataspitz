@@ -1,6 +1,6 @@
 import { StyleForm } from "../StyleForm";
 import { useForm } from "react-hook-form";
-import { RegisterSchema } from "./RegisterSchema";
+import { registerSchema } from "./RegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StyleRestriction } from "../StyleRestriction";
 import { useNavigate } from "react-router-dom";
@@ -10,14 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export function FormRegister() {
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(RegisterSchema)
+        resolver: zodResolver(registerSchema)
     })
     const navFromLogin = useNavigate()
 
    async function registerUser(form) {
         try {
-            const { data } = await api.post("/users", form)
-            console.log(data);
+            await api.post("/users", form)
             toast.success("Sua conta foi criada com sucesso")
             setTimeout(() =>{
                 navFromLogin("/")
@@ -25,6 +24,7 @@ export function FormRegister() {
         } catch (error) {
             toast.error("dados já cadastrados")          
         }
+        console.log(form);
     }
 
     async function submit(form) {
@@ -50,7 +50,7 @@ export function FormRegister() {
             {errors.bio ? <StyleRestriction>{ errors.bio.message }</StyleRestriction> : null }
             <label htmlFor="tel">Contato</label>
             <input type="tel" placeholder="Opção para contato"  { ...register("contact") }/>
-            {errors.contact ? <StyleRestriction>{ errors.bio.message }</StyleRestriction> : null }
+            {errors.contact ? <StyleRestriction>{ errors.contact.message }</StyleRestriction> : null }
             <label htmlFor="select">Selecionar módulo</label>
             <select   { ...register("course_module") }>
                 <option value="">Selecione aqui</option>

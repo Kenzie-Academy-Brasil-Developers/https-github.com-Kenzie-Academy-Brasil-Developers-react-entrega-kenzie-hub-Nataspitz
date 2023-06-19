@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { StyleSectionForm } from "./StyleSectionForm";
 
-export function SectionForm({ title, text, children, span, button }) {
+export function SectionForm({ title, text, children, span, buttonName }) {
     return(
         <StyleSectionForm  >
             {
@@ -19,7 +19,7 @@ export function SectionForm({ title, text, children, span, button }) {
                     span 
                     ? <div className="container__login">
                         { span && <span>{ span }</span>}
-                        { button &&<Link to={"/cadastro"} className="buttonLogin"> { button }</Link>}
+                        { buttonName &&<Link to={"/cadastro"} className="buttonLogin"> { buttonName }</Link>}
                        </div>  
                     : null 
 

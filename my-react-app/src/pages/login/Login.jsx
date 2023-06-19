@@ -11,8 +11,8 @@ export function Login() {
                     <img src={ logo } alt="Logo do KeenzieHub" />
                 </header>
                 <main>
-                    <SectionForm title={"Login"} span={"Ainda não possui uma conta?"} button={"Cadastre-se"} >
-                        <FormLogin />
+                    <SectionForm title={"Login"} span={"Ainda não possui uma conta?"} buttonName={"Cadastre-se"} >
+                        <FormLogin  />
                     </SectionForm>
                 </main>
             </StyleContainerForm>

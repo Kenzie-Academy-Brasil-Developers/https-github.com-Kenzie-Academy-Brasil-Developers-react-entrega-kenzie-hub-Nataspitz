@@ -19,8 +19,8 @@ export function FormLogin() {
             const { data } = await api.post("/sessions", form)
             const userId = data.user.id
     
-            localStorage.setItem("@TOKEN", JSON.stringify(data.token))
-            localStorage.setItem("@USERID", JSON.stringify(userId))
+           localStorage.setItem("@TOKEN", JSON.stringify(data.token))
+          localStorage.setItem("@USERID", JSON.stringify(userId))
 
             setTimeout(() =>{
                 navFromDashboard(`/perfil`)
@@ -32,7 +32,6 @@ export function FormLogin() {
 
     function subimt(form) {
         login(form);
-        console.log();
     }
 
     return(
