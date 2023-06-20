@@ -1,13 +1,24 @@
 import { useContext } from "react";
 import { StyleForm } from "../StyleForm";
 import { StyleRestriction } from "../StyleRestriction";
-
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginSchema } from "./LoginSchema";
+import { useForm } from "react-hook-form";
+import { UserContext } from "../../../providers/UserContext";
 
 export function FormLogin() {
-    const {  } = useContext
+    const { login } = useContext(UserContext)
+
+        const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(LoginSchema)
+    })
+
+    function subimtLogin( form) {
+        login(form);
+    }
 
     return(
-        <StyleForm onSubmit={handleSubmit(subimt)} noValidate>
+        <StyleForm onSubmit={handleSubmit(subimtLogin)} noValidate>
             <label htmlFor="email">Email</label>
             <input type="email" placeholder="Ex: ....@gmail.com" { ...register("email") }/>
             {errors.email ? <StyleRestriction>{ errors.email.message }</StyleRestriction> : null }
