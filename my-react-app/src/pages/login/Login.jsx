@@ -12,9 +12,7 @@ export function Login() {
                 </header>
                 <main>
                     <SectionForm title={"Login"} span={"Ainda não possui uma conta?"} buttonName={"Cadastre-se"} >
-                        <UserProvider>
                             <FormLogin  />
-                        </UserProvider>
                     </SectionForm>
                 </main>
             </StyleContainerForm>

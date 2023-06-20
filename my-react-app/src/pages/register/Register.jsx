@@ -12,9 +12,9 @@ export function Register() {
                 <Header  text={"Voltar"}/>
                 <main>
                     <SectionForm title={"Crie sua conta"} text={"Rápido e grátis, vamos nessa"}>
-                        <UserProvider>
+                        
                             <FormRegister />
-                        </UserProvider>
+                        
                     </SectionForm>
                 </main>
             </StyleContainerForm>

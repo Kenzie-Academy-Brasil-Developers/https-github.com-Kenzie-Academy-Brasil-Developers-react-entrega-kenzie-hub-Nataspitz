@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/Api";
 import { toast } from "react-toastify";
@@ -8,7 +8,10 @@ export const UserContext = createContext({})
 
 export function UserProvider({children}) {
     const navFromPages = useNavigate()
-
+    const [user, setUser] = useState(undefined)
+    const token = localStorage.getItem("@TOKEN")
+    const idLocalStorege =localStorage.getItem("@USERID")
+    
     async function loginUser(form) {
         try {
             const { data } = await api.post("/sessions", form)
@@ -35,10 +38,24 @@ export function UserProvider({children}) {
         }
     }
 
-
+    useEffect(() =>{
+        async function infoPerfil() {
+            try {
+                const { data } = await api.get(`/profile`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                setUser(data)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        infoPerfil()
+    }, [])
 
     return(
-        <UserContext.Provider value={{ loginUser , registerUser }}>
+        <UserContext.Provider value={{ loginUser , registerUser, user }}>
             {children}
         </UserContext.Provider>
     )
