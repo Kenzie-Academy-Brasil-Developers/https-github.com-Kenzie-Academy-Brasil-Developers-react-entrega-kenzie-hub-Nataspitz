@@ -3,36 +3,24 @@ import { useForm } from "react-hook-form";
 import { registerSchema } from "./RegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StyleRestriction } from "../StyleRestriction";
-import { useNavigate } from "react-router-dom";
-import { api } from "../../../services/Api";
-import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserContext";
 
 export function FormRegister() {
+    const { registerUser } = useContext(UserContext)
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(registerSchema)
     })
-    const navFromLogin = useNavigate()
 
-   async function registerUser(form) {
-        try {
-            await api.post("/users", form)
-            toast.success("Sua conta foi criada com sucesso")
-            setTimeout(() =>{
-                navFromLogin("/")
-            }, 1000)
-        } catch (error) {
-            toast.error("dados já cadastrados")          
-        }
-        console.log(form);
-    }
 
-    async function submit(form) {
+
+    async function submitRegister(form) {
         registerUser(form);
     }
 
     return(
-        <StyleForm onSubmit={handleSubmit(submit)} noValidate>
+        <StyleForm onSubmit={handleSubmit(submitRegister)} noValidate>
             <label htmlFor="text">Nome</label>
             <input type="text" placeholder="Digite aqui seu nome" { ...register("name") }/>
             {errors.name ? <StyleRestriction>{ errors.name.message }</StyleRestriction> : null }

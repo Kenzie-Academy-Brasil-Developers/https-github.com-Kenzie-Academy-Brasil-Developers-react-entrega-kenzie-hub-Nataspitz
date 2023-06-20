@@ -9,14 +9,12 @@ export const UserContext = createContext({})
 export function UserProvider({children}) {
     const navFromPages = useNavigate()
 
-    async function login(form) {
+    async function loginUser(form) {
         try {
             const { data } = await api.post("/sessions", form)
             const userId = data.user.id
-    
-          localStorage.setItem("@TOKEN", JSON.stringify(data.token))
-          localStorage.setItem("@USERID", JSON.stringify(userId))
-
+             localStorage.setItem("@TOKEN", (data.token))
+             localStorage.setItem("@USERID",(userId))
             setTimeout(() =>{
                 navFromPages(`/perfil`)
             },1000)
@@ -25,10 +23,22 @@ export function UserProvider({children}) {
         }
     }
 
+    async function registerUser(form) {
+        try {
+            await api.post("/users", form)
+            toast.success("Sua conta foi criada com sucesso")
+            setTimeout(() =>{
+                navFromPages("/")
+            }, 1000)
+        } catch (error) {
+            toast.error("dados já cadastrados")          
+        }
+    }
+
 
 
     return(
-        <UserContext.Provider value={{ login }}>
+        <UserContext.Provider value={{ loginUser , registerUser }}>
             {children}
         </UserContext.Provider>
     )

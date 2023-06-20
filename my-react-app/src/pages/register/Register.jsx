@@ -2,6 +2,7 @@ import { StyleContainerForm } from "../../components/containerForm/StyleContaine
 import { FormRegister } from "../../components/form/register/FormRegister";
 import { Header } from "../../components/header/Header";
 import { SectionForm } from "../../components/sectionForm/SectionForm";
+import { UserProvider } from "../../providers/UserContext";
 
 
 export function Register() {
@@ -11,7 +12,9 @@ export function Register() {
                 <Header  text={"Voltar"}/>
                 <main>
                     <SectionForm title={"Crie sua conta"} text={"Rápido e grátis, vamos nessa"}>
-                        <FormRegister />
+                        <UserProvider>
+                            <FormRegister />
+                        </UserProvider>
                     </SectionForm>
                 </main>
             </StyleContainerForm>

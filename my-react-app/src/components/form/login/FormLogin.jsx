@@ -7,14 +7,14 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../../providers/UserContext";
 
 export function FormLogin() {
-    const { login } = useContext(UserContext)
+    const { loginUser } = useContext(UserContext)
 
         const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(LoginSchema)
     })
 
     function subimtLogin( form) {
-        login(form);
+        loginUser(form);
     }
 
     return(
