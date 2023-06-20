@@ -1,55 +1,35 @@
 import { StyleContainerDash } from "../../components/containerDash/StyleContainerDash";
 import { Header } from "../../components/header/Header";
 import { MainSectionDash } from "../../components/containerDash/mainSectionDash/MainSectionDash";
-import { useEffect, useState } from "react";
-import { api } from "../../services/Api";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
 export function Dashboard() {
-    const [user, setUser] = useState([])
-    const token = JSON.parse(localStorage.getItem("@TOKEN"))
-    const navFromHome = useNavigate()
-
-    useEffect(() =>{
-        async function infoPerfil() {
-            try {
-                const { data } = await api.get(`/profile`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                })
-                setUser(data)
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        infoPerfil()
-    }, [])
-
-
-    function returnHome() {
-        localStorage.clear()
-        navFromHome("/")
-    }
-
+    const { user, returnHome } = useContext(UserContext)
+    
     return(
         <>
-            <StyleContainerDash>
-                <Header text={"Sair"} logout={true}  returnHome={ returnHome }/>
-            </StyleContainerDash>
-            <main>
-                <section className="subHeader">
-                    <StyleContainerDash>
-                        <div>
-                            <h2>{`Ola, ${user.name}`}</h2>
-                            <p>{user.course_module}</p>
-                        </div>
-                    </StyleContainerDash>
-                </section>
-                <StyleContainerDash>
-                    <MainSectionDash />
-                </StyleContainerDash>
-            </main>
+            {user? (
+                        <>
+                        <StyleContainerDash>
+                            <Header text={"Sair"} logout={true}  returnHome={ returnHome }/>
+                        </StyleContainerDash>
+                        <main>
+                            <section className="subHeader">
+                                <StyleContainerDash>
+                                    <div>
+                                        <h2>{`Ola, ${user.name}`}</h2>
+                                        <p>{user.course_module}</p>
+                                    </div>
+                                </StyleContainerDash>
+                            </section>
+                            <StyleContainerDash>
+                                <MainSectionDash />
+                            </StyleContainerDash>
+                        </main>
+                    </>
+            ) :( <h1>Carregando</h1>)}
         </>
+
     )
 } 
