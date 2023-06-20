@@ -18,13 +18,15 @@ export function UserProvider({children}) {
             const userId = data.user.id
              localStorage.setItem("@TOKEN", (data.token))
              localStorage.setItem("@USERID",(userId))
-            setTimeout(() =>{
-                navFromPages(`/perfil`)
-            },1000)
+                setUser(data.user)
+                 setTimeout(() =>{
+                     navFromPages(`/perfil`)
+                 },1000)
         } catch (error) {
             toast.error("E-mail ou senha inválida")
         }
     }
+    console.log(user);
 
     async function registerUser(form) {
         try {
@@ -54,8 +56,13 @@ export function UserProvider({children}) {
         infoPerfil()
     }, [])
 
+    function returnHome() {
+        localStorage.clear()
+        navFromPages("/")
+    }
+
     return(
-        <UserContext.Provider value={{ loginUser , registerUser, user }}>
+        <UserContext.Provider value={{ loginUser , registerUser, user, returnHome }}>
             {children}
         </UserContext.Provider>
     )

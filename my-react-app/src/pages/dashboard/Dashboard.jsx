@@ -5,16 +5,8 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 
 export function Dashboard() {
-    const { user } = useContext(UserContext)
-
-    console.log(user);
-
-
-    function returnHome() {
-        localStorage.clear()
-        navFromHome("/")
-    }
-
+    const { user, returnHome } = useContext(UserContext)
+    
     return(
         <>
             {user? (
