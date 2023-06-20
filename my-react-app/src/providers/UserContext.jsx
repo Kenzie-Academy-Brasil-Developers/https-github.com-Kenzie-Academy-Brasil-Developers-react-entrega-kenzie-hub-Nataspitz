@@ -26,7 +26,6 @@ export function UserProvider({children}) {
             toast.error("E-mail ou senha inválida")
         }
     }
-    console.log(user);
 
     async function registerUser(form) {
         try {
@@ -42,15 +41,19 @@ export function UserProvider({children}) {
 
     useEffect(() =>{
         async function infoPerfil() {
-            try {
-                const { data } = await api.get(`/profile`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                })
-                setUser(data)
-            } catch (error) {
-                console.error(error);
+
+            if (token && idLocalStorege) {
+                try {
+                    const { data } = await api.get(`/profile`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                     }
+                    })
+                    setUser(data)
+                } catch (error) {
+                    console.error(error);
+                }
+            
             }
         }
         infoPerfil()

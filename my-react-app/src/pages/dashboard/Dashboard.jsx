@@ -6,6 +6,7 @@ import { UserContext } from "../../providers/UserContext";
 
 export function Dashboard() {
     const { user, returnHome } = useContext(UserContext)
+    console.log(user);
     
     return(
         <>
