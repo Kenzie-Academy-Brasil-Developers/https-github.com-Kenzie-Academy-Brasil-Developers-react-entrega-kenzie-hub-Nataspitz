@@ -19,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
 
     --size-title1: 1.125rem;
     --size-title2: 1rem;
+    --size-title3: 0.875rem;
     --size-button1: 0.875rem;
     --size-button2: 0.75rem;
     --size-text: 0.75rem;
@@ -38,6 +39,7 @@ body, input, button, select, a {
 
 h1{
     color: white;
+    font-size: var(--size-title1);
 }
 
 li, ol{
@@ -57,7 +59,7 @@ input{
 
 h2{
     color: var(--grey-0);
-    font-size: var(--size-title1);
+    font-size: var(--size-title2);
 }
 
 p, span{

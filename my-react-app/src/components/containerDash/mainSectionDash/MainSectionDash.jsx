@@ -1,10 +1,15 @@
 import { StyleMainSectionDash } from "./StyleMainSectionDash";
+import add from "../../../assets/add.png"
 
 export function MainSectionDash() {
     return(
         <StyleMainSectionDash>
-            <h2>{"Que pena! Estamos em desenvolvimento :("}</h2>
-            <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
+           <div>
+                <h2>Tecnologias</h2>
+                <div>
+                    <img src={add} alt="Adiciona uma nova tecnologia" />
+                </div>
+           </div>
         </StyleMainSectionDash>
     )
 }

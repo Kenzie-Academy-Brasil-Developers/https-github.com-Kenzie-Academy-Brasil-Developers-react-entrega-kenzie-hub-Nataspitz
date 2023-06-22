@@ -1,14 +1,22 @@
 import styled from "styled-components";
 
 export const StyleMainSectionDash = styled.section`
-    h2{
-        max-width: 80%;
-        margin-bottom: 10px;
-    }
 
-    p{
-        max-width: 80%;
-        font-weight: 600;
+div:nth-child(1){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    div{
+        background-color: var(--grey-3);
+        cursor: pointer;
+        border-radius: 3px;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+}
 
 `

@@ -7,11 +7,11 @@ export function SectionForm({ title, text, children, span, buttonName }) {
             {
                 text
                 ? <div className="column">
-                    <h2>{ title }</h2>
+                    <h1>{ title }</h1>
                     { text && <p>{ text }</p> }
                    </div>
                    : <div  className="row">
-                        <h2>{ title }</h2>
+                        <h1>{ title }</h1>
                     </div>
             }
                 { children }
