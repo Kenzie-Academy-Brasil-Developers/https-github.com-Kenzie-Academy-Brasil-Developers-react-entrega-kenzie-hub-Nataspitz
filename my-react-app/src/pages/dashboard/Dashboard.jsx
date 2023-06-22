@@ -3,7 +3,7 @@ import { Header } from "../../components/header/Header";
 import { MainSectionDash } from "../../components/containerDash/mainSectionDash/MainSectionDash";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
-import { Modal } from "../../components/modal";
+import { Modal } from "../../components/modal/Modal";
 import { TechContext, } from "../../providers/TechContext";
 
 export function Dashboard() {
