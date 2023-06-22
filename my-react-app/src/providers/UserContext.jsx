@@ -50,6 +50,7 @@ export function UserProvider({children}) {
                      }
                     })
                     setUser(data)
+                    navFromPages("/perfil")
                 } catch (error) {
                     console.error(error);
                 }
