@@ -10,7 +10,10 @@ export function FormRegister() {
     const { registerUser } = useContext(UserContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(registerSchema)
+        resolver: zodResolver(registerSchema),
+      /*  defaultValues: {
+            name: "nome"
+        }*/
     })
 
 
