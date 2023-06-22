@@ -10,7 +10,7 @@ export const StyleContainerForm = styled.div`
         justify-content: center;
         align-items: flex-end;
         height: 80px;
-        margin-bottom: 30px;
+        margin-bottom: 30px; 
     }
     
 `

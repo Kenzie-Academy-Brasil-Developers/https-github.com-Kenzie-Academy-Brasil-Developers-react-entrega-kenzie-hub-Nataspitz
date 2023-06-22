@@ -8,12 +8,11 @@ import { UserContext } from "../../../providers/UserContext";
 
 export function FormLogin() {
     const { loginUser } = useContext(UserContext)
-
-        const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(LoginSchema)
+    const { register, handleSubmit, formState: { errors } } = useForm({
+         resolver: zodResolver(LoginSchema)
     })
 
-    function subimtLogin( form) {
+    function subimtLogin(form) {
         loginUser(form);
     }
 
