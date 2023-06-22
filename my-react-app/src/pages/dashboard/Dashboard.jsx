@@ -1,10 +1,11 @@
 import { StyleContainerDash } from "../../components/containerDash/StyleContainerDash";
 import { Header } from "../../components/header/Header";
-import { MainSectionDash } from "../../components/containerDash/mainSectionDash/MainSectionDash";
+import { MainSectionDash } from "../../components/mainSectionDash/MainSectionDash";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { Modal } from "../../components/modal/Modal";
 import { TechContext, } from "../../providers/TechContext";
+import { ModalCreate } from "../../components/modal/formModal/modalCreate/ModalCreate";
 
 export function Dashboard() {
     const { user, returnHome } = useContext(UserContext)

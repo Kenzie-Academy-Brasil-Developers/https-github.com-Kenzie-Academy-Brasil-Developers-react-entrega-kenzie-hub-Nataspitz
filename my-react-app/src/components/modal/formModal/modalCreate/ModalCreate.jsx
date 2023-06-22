@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { StyleModalCreate } from "./StyleModalCreate";
-import { TechContext } from "../../../../../providers/TechContext";
+import { TechContext } from "../../../../providers/TechContext";
+
 
 export function ModalCreate() {
     const { setIsOpen } = useContext(TechContext)

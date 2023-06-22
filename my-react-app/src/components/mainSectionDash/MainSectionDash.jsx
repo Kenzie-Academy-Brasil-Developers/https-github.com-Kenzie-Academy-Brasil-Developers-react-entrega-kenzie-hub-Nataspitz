@@ -1,7 +1,7 @@
 import { StyleMainSectionDash } from "./StyleMainSectionDash";
-import add from "../../../assets/add.png"
+import add from "../../assets/add.png"
 import { useContext } from "react";
-import { TechContext } from "../../../providers/TechContext";
+import { TechContext } from "../../providers/TechContext";
 
 export function MainSectionDash() {
     const { setIsOpen, setModalType } = useContext(TechContext)
