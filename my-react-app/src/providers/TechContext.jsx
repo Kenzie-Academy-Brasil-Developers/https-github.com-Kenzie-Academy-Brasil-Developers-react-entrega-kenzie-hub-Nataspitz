@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext,  useState } from "react";
 import { createContext } from "react";
 import { api } from "../services/Api";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import { UserContext } from "./UserContext";
 
 export const TechContext = createContext({})
@@ -13,8 +12,8 @@ export function TechProvider({children}) {
     const token = localStorage.getItem("@TOKEN")
     const { user } = useContext(UserContext)
     const [ techs, setTechs ] = useState(user.techs)
+    const [ card, setCard] = useState(null)
 
-    
     
     async function newTech(form) {
         try {
@@ -29,10 +28,24 @@ export function TechProvider({children}) {
             toast.error("Essa tecnologia já foi cadastrada")
         }
     }
+    
+
+   async function deleteTech(techId) {
+       try {
+            await api.delete(`/users/techs/:${techId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setTechs((techs) => techs.filter(tech => tech.id !== techId))  
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
     return(
-        <TechContext.Provider value={{ isOpen, setIsOpen, modalType, setModalType, newTech, techs }}>
+        <TechContext.Provider value={{ isOpen, setIsOpen, modalType, setModalType, newTech, techs, deleteTech, setCard, card }}>
             {children}
         </TechContext.Provider>
     )

@@ -3,7 +3,8 @@ import { TechContext } from "../../../../providers/TechContext";
 import { StyleModalEdit } from "./StyleModalEdit";
 
 export function ModalEdit() {
-    const { setIsOpen } = useContext(TechContext)
+    const { setIsOpen, card} = useContext(TechContext)
+
     return(
         <StyleModalEdit role="dialog">
             <header>
@@ -13,7 +14,7 @@ export function ModalEdit() {
             <form>
                 <p>Nome da Tecnologia</p>
                 <div>
-                    <span></span>
+                    <span>nome da tech</span>
                 </div>
                 <label htmlFor="select">Status</label>
                 <select name="tech" >
