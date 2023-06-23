@@ -11,7 +11,6 @@ import { ModalEdit } from "../../components/modal/formModal/modalEdit/ModalEdit"
 export function Dashboard() {
     const { user, returnHome } = useContext(UserContext)
     const { isOpen, modalType } = useContext(TechContext)
-    //console.log( user.techs);
     
     return(
 

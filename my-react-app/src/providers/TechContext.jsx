@@ -32,20 +32,36 @@ export function TechProvider({children}) {
 
    async function deleteTech(techId) {
        try {
-            await api.delete(`/users/techs/:${techId}`, {
+            await api.delete(`/users/techs/${techId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
             setTechs((techs) => techs.filter(tech => tech.id !== techId))  
+            toast.success("Tecnologia deletada com sucesso")
+            setIsOpen(false)
         } catch (error) {
             console.log(error);
         }
     }
 
+    async function editTech(techId, form) {
+        try {
+         await api.ut(`/users/techs/${techId}`, form, {
+             headers: {
+                 Authorization: `Bearer ${token}`
+             }
+         })
+         setTechs((techs) => techs.filter(tech => tech.id !== techId))  
+         toast.success("Tecnologia editada com sucesso")
+         setIsOpen(false)     
+        } catch (error) {
+            
+        }
+    }
 
     return(
-        <TechContext.Provider value={{ isOpen, setIsOpen, modalType, setModalType, newTech, techs, deleteTech, setCard, card }}>
+        <TechContext.Provider value={{ isOpen, setIsOpen, modalType, setModalType, newTech, techs, deleteTech, setCard, card, deleteTech, editTech }}>
             {children}
         </TechContext.Provider>
     )
