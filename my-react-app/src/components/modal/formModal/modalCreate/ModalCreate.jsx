@@ -15,6 +15,7 @@ export function ModalCreate() {
 
     function submitCreate(form) {
         newTech(form)
+        setIsOpen(false)
     }
 
     return(

@@ -5,7 +5,7 @@ import { TechContext } from "../../providers/TechContext";
 import { List } from "./list/List";
 
 export function MainSectionDash() {
-    const { setIsOpen, setModalType, createTech } = useContext(TechContext)
+    const { setIsOpen, setModalType } = useContext(TechContext)
 
    
     return(

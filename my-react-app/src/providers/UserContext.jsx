@@ -11,6 +11,7 @@ export function UserProvider({children}) {
     const [user, setUser] = useState(null)
     const token = localStorage.getItem("@TOKEN")
     const idLocalStorege =localStorage.getItem("@USERID")
+    const [ loading, setLoading] = useState(false)
     
     async function loginUser(form) {
         try {
@@ -66,7 +67,7 @@ export function UserProvider({children}) {
     }
 
     return(
-        <UserContext.Provider value={{ loginUser , registerUser, user, returnHome }}>
+        <UserContext.Provider value={{ loginUser , registerUser, user, returnHome, setUser }}>
             {children}
         </UserContext.Provider>
     )

@@ -6,6 +6,7 @@ import { UserContext } from "../../providers/UserContext";
 import { Modal } from "../../components/modal/Modal";
 import { TechContext, } from "../../providers/TechContext";
 import { ModalCreate } from "../../components/modal/formModal/modalCreate/ModalCreate";
+import { ModalEdit } from "../../components/modal/formModal/modalEdit/ModalEdit";
 
 export function Dashboard() {
     const { user, returnHome } = useContext(UserContext)
@@ -21,7 +22,7 @@ export function Dashboard() {
                     modalType === "create" &&    <ModalCreate />
                 }
                  {
-                    modalType === "edit"  &&    <h1>edit</h1>
+                    modalType === "edit"  &&    <ModalEdit/>
                 }
             </Modal>
             :null

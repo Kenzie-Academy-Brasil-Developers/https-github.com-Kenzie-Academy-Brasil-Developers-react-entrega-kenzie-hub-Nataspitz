@@ -22,6 +22,10 @@ li{
 
     :hover{
         background-color: var(--grey-1);
+
+        span{
+            color: var(--grey-0);
+        }
     }
 }
 `
