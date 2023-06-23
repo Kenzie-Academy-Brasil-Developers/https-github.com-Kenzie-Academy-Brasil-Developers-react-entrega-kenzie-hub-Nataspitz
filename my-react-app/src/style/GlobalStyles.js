@@ -62,6 +62,13 @@ h2{
     font-size: var(--size-title2);
 }
 
+h3{
+    color: var(--grey-0);
+    font-size: var(--size-title3);
+}
+
+
+
 p, span{
     font-size: var(--size-text);
     color: var(--grey-1);

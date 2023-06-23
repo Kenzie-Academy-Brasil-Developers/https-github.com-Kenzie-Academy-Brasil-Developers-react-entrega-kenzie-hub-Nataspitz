@@ -10,7 +10,7 @@ import { ModalCreate } from "../../components/modal/formModal/modalCreate/ModalC
 export function Dashboard() {
     const { user, returnHome } = useContext(UserContext)
     const { isOpen, modalType } = useContext(TechContext)
-    console.log( user);
+    //console.log( user.techs);
     
     return(
 

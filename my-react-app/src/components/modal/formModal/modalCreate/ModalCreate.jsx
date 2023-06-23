@@ -9,12 +9,12 @@ import { StyleRestriction } from "../../../form/StyleRestriction";
 
 export function ModalCreate() {
     const { setIsOpen, newTech } = useContext(TechContext)
-    const {register, handleSubmit, formstate: { errors }} = useForm({
+    const {register, handleSubmit, formState: { errors }} = useForm({
         resolver: zodResolver(modalSchema)
     })
 
     function submitCreate(form) {
-        console.log(form)
+        newTech(form)
     }
 
     return(
@@ -33,7 +33,6 @@ export function ModalCreate() {
                     <option value="Intermediário">Intermediário</option>
                     <option value="Avançado">Avançado</option>
                 </select>
-                {errors.status ? <StyleRestriction>{ errors.status.message}</StyleRestriction>: null}
                 <button type="submit">Cadastrar Tecnologia</button>
             </form>
         </StyleModalCreate>

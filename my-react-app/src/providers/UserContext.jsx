@@ -8,7 +8,7 @@ export const UserContext = createContext({})
 
 export function UserProvider({children}) {
     const navFromPages = useNavigate()
-    const [user, setUser] = useState(undefined)
+    const [user, setUser] = useState(null)
     const token = localStorage.getItem("@TOKEN")
     const idLocalStorege =localStorage.getItem("@USERID")
     
