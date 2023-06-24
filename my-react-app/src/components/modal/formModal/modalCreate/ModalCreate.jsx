@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { modalSchema } from "../../ModalSchema";
 import { StyleRestriction } from "../../../form/StyleRestriction";
+import { StyleHeader } from "../StyleHeader";
 
 
 export function ModalCreate() {
@@ -20,10 +21,10 @@ export function ModalCreate() {
 
     return(
         <StyleModalCreate role="dialog">
-            <header>
+            <StyleHeader>
                 <h3>Cadastre Tecnologia</h3>
                 <button onClick={() => setIsOpen(false)}>X</button>
-            </header>
+            </StyleHeader>
             <form onSubmit={handleSubmit(submitCreate)}>
                 <label htmlFor="text">Nome</label>
                 <input type="text" placeholder="Digite aqui" { ...register("title")}/>

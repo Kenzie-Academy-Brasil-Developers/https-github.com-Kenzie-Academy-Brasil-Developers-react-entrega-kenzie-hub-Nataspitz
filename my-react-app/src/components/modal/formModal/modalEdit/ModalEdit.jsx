@@ -2,16 +2,14 @@ import { useContext } from "react";
 import { TechContext } from "../../../../providers/TechContext";
 import { StyleModalEdit } from "./StyleModalEdit";
 import { useForm } from "react-hook-form";
-import { resolvePath } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { modalSchema } from "../../ModalSchema";
 import { StyleRestriction } from "../../../form/StyleRestriction";
+import { StyleHeader } from "../StyleHeader";
 
 export function ModalEdit() {
     const { setIsOpen, card, deleteTech, editTech} = useContext(TechContext)
-    const { register, handleSubmit, formState: { errors }} = useForm({
-        resolver: zodResolver(modalSchema)
-})
+    const { register, handleSubmit} = useForm()
 
 function editSubmit(form) {
     editTech(card.id, form);
@@ -19,13 +17,13 @@ function editSubmit(form) {
 
     return(
         <StyleModalEdit role="dialog">
-            <header>
+            <StyleHeader>
                 <h3>Tecnologia Detalhes</h3>
                 <button onClick={() => setIsOpen(false)}>X</button>
-            </header>
+            </StyleHeader>
             <form onSubmit={handleSubmit(editSubmit)}>
                 <p>Nome da Tecnologia</p>
-                <div>
+                <div className="div__inputEdit">
                     <span>{card.title}</span>
                 </div>
                 <label htmlFor="select">Status</label>
@@ -34,10 +32,9 @@ function editSubmit(form) {
                     <option value="Intermediário">Intermediário</option>
                     <option value="Avançado">Avançado</option>
                 </select>
-                {errors.status ? <StyleRestriction>{errors.status.message}</StyleRestriction>: null}
-                <div>
-                    <button type="submit">Salvar alterações</button>
-                    <button onClick={() => deleteTech(card.id)}>Excluir</button>
+                <div className="buttons__form">
+                    <button id="edit_1" type="submit">Salvar alterações</button>
+                    <button id="edit_2" onClick={() => deleteTech(card.id)}>Excluir</button>
                 </div>
             </form>
 

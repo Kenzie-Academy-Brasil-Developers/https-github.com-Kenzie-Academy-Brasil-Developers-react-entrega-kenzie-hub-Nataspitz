@@ -23,6 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     --size-button1: 0.875rem;
     --size-button2: 0.75rem;
     --size-text: 0.75rem;
+    --size-label: 0.5625rem;
     --size-button: 0.875rem
 
 }

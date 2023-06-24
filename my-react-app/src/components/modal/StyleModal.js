@@ -9,9 +9,6 @@ export const StyleModal = styled.div`
     width: 100%;
     height: 100vh;
     background: #00000080;
-
-    div{
-        background-color: var(--grey-0);
-    }
+    padding: 0 10px;
 
 `
