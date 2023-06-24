@@ -2,9 +2,6 @@ import { useContext } from "react";
 import { TechContext } from "../../../../providers/TechContext";
 import { StyleModalEdit } from "./StyleModalEdit";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { modalSchema } from "../../ModalSchema";
-import { StyleRestriction } from "../../../form/StyleRestriction";
 import { StyleHeader } from "../StyleHeader";
 
 export function ModalEdit() {
@@ -12,7 +9,8 @@ export function ModalEdit() {
     const { register, handleSubmit} = useForm()
 
 function editSubmit(form) {
-    editTech(card.id, form);
+    editTech(card.id, form)
+    setIsOpen(false)
 }
 
     return(
@@ -33,8 +31,8 @@ function editSubmit(form) {
                     <option value="Avançado">Avançado</option>
                 </select>
                 <div className="buttons__form">
-                    <button id="edit_1" type="submit">Salvar alterações</button>
                     <button id="edit_2" onClick={() => deleteTech(card.id)}>Excluir</button>
+                    <button id="edit_1" type="submit">Salvar alterações</button>
                 </div>
             </form>
 

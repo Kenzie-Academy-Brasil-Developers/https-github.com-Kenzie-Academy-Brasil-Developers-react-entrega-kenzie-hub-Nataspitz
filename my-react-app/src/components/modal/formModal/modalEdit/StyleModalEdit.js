@@ -50,6 +50,7 @@ export const StyleModalEdit = styled.div`
         .buttons__form{
             width: 100%;
             display: flex;
+            flex-direction: row-reverse;
             gap: 10px;
             margin: 15px 0;
 

@@ -47,12 +47,12 @@ export function TechProvider({children}) {
 
     async function editTech(techId, form) {
         try {
-         await api.ut(`/users/techs/${techId}`, form, {
-             headers: {
-                 Authorization: `Bearer ${token}`
-             }
-         })
-         setTechs((techs) => techs.filter(tech => tech.id !== techId))  
+           const { data } = await api.put(`/users/techs/${techId}`, form, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            console.log(data);
          toast.success("Tecnologia editada com sucesso")
          setIsOpen(false)     
         } catch (error) {
