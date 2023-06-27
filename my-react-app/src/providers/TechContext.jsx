@@ -44,19 +44,21 @@ export function TechProvider({children}) {
             console.log(error);
         }
     }
-
+    
     async function editTech(techId, form) {
         try {
+            let currentTechs = [...techs]
+            currentTechs = currentTechs.filter(tech => tech.id !== techId)
            const { data } = await api.put(`/users/techs/${techId}`, form, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log(data);
-         toast.success("Tecnologia editada com sucesso")
-         setIsOpen(false)     
+            setTechs([...currentTechs, data])
+           toast.success("Tecnologia editada com sucesso")
+           setIsOpen(false)     
         } catch (error) {
-            
+            console.log(error);
         }
     }
 

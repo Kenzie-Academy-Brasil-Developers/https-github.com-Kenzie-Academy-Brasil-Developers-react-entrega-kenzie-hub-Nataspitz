@@ -25,7 +25,7 @@ function editSubmit(form) {
                     <span>{card.title}</span>
                 </div>
                 <label htmlFor="select">Status</label>
-                <select name="tech" { ...register("status")}>
+                <select defaultValue={card.status} name="tech" { ...register("status")}>
                     <option value="Iniciante">Iniciante</option>
                     <option value="Intermediário">Intermediário</option>
                     <option value="Avançado">Avançado</option>
